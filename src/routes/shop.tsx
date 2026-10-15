@@ -4,11 +4,11 @@ import { Search } from "lucide-react";
 import { CATEGORIES, PRODUCTS } from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 
-type SearchParams = { category?: string };
+type SearchParams = { category?: string | undefined };
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (s: Record<string, unknown>): SearchParams => ({
-    category: typeof s.category === "string" ? s.category : undefined,
+    category: typeof s["category"] === "string" ? s["category"] : undefined,
   }),
   head: () => ({
     meta: [
